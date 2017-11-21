@@ -27,4 +27,11 @@ public class ConverterTest {
         mTarget.setAmount(amount);
         assertThat(mTarget.getResult(), is(amount / rate));
     }
+
+    @Test
+    public void calculationIsCorrect() {
+        double amount = 4.5;
+        mTarget.setAmount(amount);
+        assertThat(mTarget.getResult(), is(amount * rate));
+    }
 }
