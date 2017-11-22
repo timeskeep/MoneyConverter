@@ -42,4 +42,8 @@ public class Converter {
         curSaleSymb = tempSymb;
         rate = 1 / rate;
     }
+
+    public void setRate(double rate) {
+        this.rate = rate;
+    }
 }

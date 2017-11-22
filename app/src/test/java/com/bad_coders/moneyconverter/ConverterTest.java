@@ -34,4 +34,14 @@ public class ConverterTest {
         mTarget.setAmount(amount);
         assertThat(mTarget.getResult(), is(amount * rate));
     }
+
+    @Test
+    public void zeroRate() {
+        double rate = 0.0;
+        double amount = 5;
+        mTarget.setAmount(amount);
+        mTarget.setRate(rate);
+        mTarget.swapCurrencies();
+        assertThat(mTarget.getRate(), is(Double.POSITIVE_INFINITY));
+    }
 }
