@@ -1,14 +1,15 @@
 package com.bad_coders.moneyconverter.ViewModel;
 
+import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.support.annotation.NonNull;
-import android.view.View;
 
+import com.bad_coders.moneyconverter.Adapter.RateAdapter;
 import com.bad_coders.moneyconverter.BR;
+import com.bad_coders.moneyconverter.Db.CurrencyDatabase;
 import com.bad_coders.moneyconverter.Model.Currency;
 import com.bad_coders.moneyconverter.Model.RateClient;
-import com.bad_coders.moneyconverter.RateAdapter;
 
 import java.util.List;
 
@@ -23,13 +24,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RateListViewModel extends BaseObservable {
-    public static final String DOMAIN_NAME = "https://bank.gov.ua/NBUStatService/v1/statdirectory/";
+    private static final String DOMAIN_NAME = "https://bank.gov.ua/NBUStatService/v1/statdirectory/";
     private boolean isLoadFinished;
     private boolean isLoadSuccess;
     private RateAdapter mAdapter;
+    private CurrencyDatabase mDatabase;
 
-    public RateListViewModel(RateAdapter adapter) {
+    public RateListViewModel(RateAdapter adapter, Context context) {
         mAdapter = adapter;
+        mDatabase = CurrencyDatabase.newInstance(context);
         loadRateList();
     }
 
@@ -51,6 +54,8 @@ public class RateListViewModel extends BaseObservable {
         @Override
         public void onResponse(@NonNull Call<List<Currency>> call, @NonNull Response<List<Currency>> response) {
             List<Currency> rateList = response.body();
+            mDatabase.getCurrencyDao().deleteAll();
+            mDatabase.getCurrencyDao().insertAll(rateList);
             isLoadFinished = true;
             isLoadSuccess = true;
             notifyLayout();
@@ -59,8 +64,12 @@ public class RateListViewModel extends BaseObservable {
 
         @Override
         public void onFailure(@NonNull Call<List<Currency>> call, @NonNull Throwable t) {
+            List<Currency> rateList = mDatabase.getCurrencyDao().getList();
             isLoadFinished = true;
-            isLoadSuccess = false;
+            if (rateList.size() != 0) {
+                mAdapter.swapList(rateList);
+                isLoadSuccess = true;
+            } else isLoadSuccess = false;
             notifyLayout();
         }
     }
@@ -80,7 +89,7 @@ public class RateListViewModel extends BaseObservable {
         return isLoadSuccess;
     }
 
-    public void onTryAgainButtonClick(View view) {
+    public void onTryAgainButtonClick() {
         isLoadFinished = false;
         isLoadSuccess = false;
         notifyLayout();

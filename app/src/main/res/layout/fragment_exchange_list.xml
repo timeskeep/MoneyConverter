@@ -95,7 +95,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:text="@string/try_again_button"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:onClick="@{(View) -> ratebox.onTryAgainButtonClick(View)}"
+                android:onClick="@{() -> ratebox.onTryAgainButtonClick()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"

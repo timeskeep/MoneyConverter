@@ -1,7 +1,5 @@
 package com.bad_coders.moneyconverter;
 
-import android.view.View;
-
 import com.bad_coders.moneyconverter.ViewModel.RateListViewModel;
 
 import org.junit.Before;
@@ -25,7 +23,7 @@ public class RateListViewModelTest {
     //Rvach mock-test
     @Test
     public void verifyRefreshStarted() {
-        mTarget.onTryAgainButtonClick(mock(View.class));
+        mTarget.onTryAgainButtonClick();
         assertThat(mTarget.isLoadFinished(), is(false));
         assertThat(mTarget.isLoadSuccess(), is(false));
     }

@@ -14,9 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bad_coders.moneyconverter.Adapter.RateAdapter;
 import com.bad_coders.moneyconverter.BuildConfig;
 import com.bad_coders.moneyconverter.R;
-import com.bad_coders.moneyconverter.RateAdapter;
 import com.bad_coders.moneyconverter.ViewModel.RateListViewModel;
 import com.bad_coders.moneyconverter.databinding.FragmentExchangeListBinding;
 
@@ -31,6 +31,7 @@ public class ExchangeListFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        setRetainInstance(true);
     }
 
     @Override
@@ -38,7 +39,7 @@ public class ExchangeListFragment extends Fragment {
                              Bundle savedInstanceState) {
         FragmentExchangeListBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_exchange_list, container, false);
         RateAdapter rateAdapter = new RateAdapter(getContext());
-        RateListViewModel rateBox = new RateListViewModel(rateAdapter);
+        RateListViewModel rateBox = new RateListViewModel(rateAdapter, getContext());
         binding.setRatebox(rateBox);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.setAdapter(rateAdapter);

@@ -1,4 +1,4 @@
-package com.bad_coders.moneyconverter;
+package com.bad_coders.moneyconverter.Adapter;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.bad_coders.moneyconverter.Model.Currency;
+import com.bad_coders.moneyconverter.R;
 import com.bad_coders.moneyconverter.ViewModel.RateListItemViewModel;
 import com.bad_coders.moneyconverter.databinding.RateItemBinding;
 
