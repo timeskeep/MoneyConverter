@@ -1,13 +1,24 @@
 apply plugin: 'com.android.application'
 
+ext {
+    git = Grgit.open()
+    gitVersionCode = git.tag.list().size()
+    gitVersionName = "${git.describe()}"
+}
+
+task printVersion() {
+    println("Version Name: $gitVersionName")
+    println("Version Code: $gitVersionCode")
+}
+
 android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.bad_coders.moneyconverter"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 1
-        versionName "beta"
+        versionCode gitVersionCode
+        versionName gitVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

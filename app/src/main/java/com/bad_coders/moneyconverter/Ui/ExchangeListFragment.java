@@ -56,7 +56,7 @@ public class ExchangeListFragment extends Fragment {
             case R.id.action_about:
                 new AlertDialog.Builder(getContext())
                         .setTitle("About")
-                        .setMessage(getString(R.string.version_info, String.valueOf(BuildConfig.VERSION_CODE), BuildConfig.BUILD_TYPE))
+                        .setMessage(getString(R.string.version_info, String.valueOf(BuildConfig.VERSION_NAME), BuildConfig.BUILD_TYPE))
                         .show();
                 return true;
             default:
