@@ -22,6 +22,7 @@ public class RateListViewModelTest {
         mTarget = mock(RateListViewModel.class);
     }
 
+    //Rvach mock-test
     @Test
     public void verifyRefreshStarted() {
         mTarget.onTryAgainButtonClick(mock(View.class));
