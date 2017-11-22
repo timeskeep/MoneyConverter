@@ -32,10 +32,9 @@ public class RateListItemViewModelTest {
     }
 
     @Test
-    public void isNameEmpty(){
-    Currency currency = mock(Currency.class);
-    when(currency.getName().equals("")).thenReturn(false);
-    assertThat("",currency.getName().equals(""));
+    public void isNameNull(){
+        Currency currency = mock(Currency.class);
+        assertThat(null, is(currency.getName()));
     }
 
 }
