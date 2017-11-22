@@ -33,4 +33,9 @@ public class Currency implements Serializable {
     public String getCurSymb() {
         return curSymb;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof Currency && ((Currency) o).curSymb.equals(curSymb) && ((Currency) o).rate == rate;
+    }
 }

@@ -1,5 +1,7 @@
 package com.bad_coders.moneyconverter;
 
+import android.view.View;
+
 import com.bad_coders.moneyconverter.Model.Currency;
 import com.bad_coders.moneyconverter.ViewModel.RateListItemViewModel;
 
@@ -10,7 +12,6 @@ import org.mockito.MockitoAnnotations;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 /**
  * Created on 21.11.2017.

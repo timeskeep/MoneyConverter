@@ -1,6 +1,7 @@
 package com.bad_coders.moneyconverter;
 
 import com.bad_coders.moneyconverter.Model.Converter;
+import com.bad_coders.moneyconverter.Model.Currency;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -43,5 +44,12 @@ public class ConverterTest {
         mTarget.setRate(rate);
         mTarget.swapCurrencies();
         assertThat(mTarget.getRate(), is(Double.POSITIVE_INFINITY));
+    }
+
+    @Test
+    public void areCurrenciesEqual() {
+        Currency currency1 = new Currency("Українська гривня", 1, "UAH");
+        Currency currency2 = new Currency("Українська гривня", 1, "UAH");
+        assertThat(currency1.equals(currency2), is(true));
     }
 }
