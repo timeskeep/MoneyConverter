@@ -11,19 +11,21 @@ import com.bad_coders.moneyconverter.R;
  * Created on 17.11.2017.
  */
 
-public abstract class BaseSingleFragmentActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
     public abstract Fragment getFragment();
+    public abstract void setLayout();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
+        setLayout();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment = fragmentManager.findFragmentById(R.id.container);
         if (fragment == null) {
             fragment = getFragment();
-            fragmentManager.beginTransaction().add(R.id.container, fragment).commit();
+            String tag = fragment.getClass().getSimpleName();
+            fragmentManager.beginTransaction().add(R.id.container, fragment, tag).commit();
         }
     }
 }

@@ -1,5 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+    <!ENTITY appname "Money Converter">
+    ]>
 <resources>
-    <string name="app_name">Money Converter</string>
+    <string name="app_name">&appname;</string>
     <string name="uah_code">UAH</string>
     <string name="uah_name">Українська гривня</string>
     <string name="error_msg">Отакої! Щось пішло не так!</string>
@@ -10,6 +14,21 @@
     <string name="rate_format">%10.4f</string>
     <string name="currency_amount">1</string>
     <string name="about_menu_item">About</string>
-    <string name="version_info">Version %s - %s</string>
+    <string name="version_info">Version %s</string>
     <string name="amount_needed_label">Необхідна кількість валюти</string>
+    <string name="action_open_drawer">Відкрити меню</string>
+    <string name="action_close_drawer">Закрити меню</string>
+    <string name="parse_error_message">Невірний формат. Ви ввели число вірно?</string>
+    <string name="exchange_rate_list_label">Курс валют</string>
+    <string name="about">Про додаток</string>
+    <string name="subject">Відгук про програму \"&appname;\"</string>
+    <string name="send_email">Відправити повідомлення, використовуючи: </string>
+    <string name="send_feedback_protocol">mailto</string>
+    <string name="feedback_email_address">tarasbarabash@gmail.com</string>
+    <string name="send_feedback">Відправити відгук</string>
+    <string name="email_intent_resolve_error">Відсутня програма для обміну е-мейл повідомлень!</string>
+    <string name="guest_label">Гість</string>
+    <string name="action_login">Увійти (створити аккаунт)</string>
+    <string name="action_logout">Вийти</string>
+    <string name="login_tip">Зареєструйтесь чи увійдіть у свій аккаунт!</string>
 </resources>

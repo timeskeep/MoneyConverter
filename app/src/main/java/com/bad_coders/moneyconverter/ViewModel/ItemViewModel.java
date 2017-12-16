@@ -12,7 +12,7 @@ import com.bad_coders.moneyconverter.Ui.ConverterActivity;
  * Created on 17.11.2017.
  */
 
-public class RateListItemViewModel extends BaseObservable {
+public class ItemViewModel extends BaseObservable {
     private Currency mCurrency;
 
     public Currency getCurrency() {

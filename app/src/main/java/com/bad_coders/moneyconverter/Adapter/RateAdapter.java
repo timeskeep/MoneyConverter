@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.bad_coders.moneyconverter.Model.Currency;
 import com.bad_coders.moneyconverter.R;
-import com.bad_coders.moneyconverter.ViewModel.RateListItemViewModel;
+import com.bad_coders.moneyconverter.ViewModel.ItemViewModel;
 import com.bad_coders.moneyconverter.databinding.RateItemBinding;
 
 import java.util.List;
@@ -49,7 +49,7 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.ViewHolder> {
         public ViewHolder(RateItemBinding binding) {
             super(binding.getRoot());
             mBinding = binding;
-            mBinding.setRateViewModel(new RateListItemViewModel());
+            mBinding.setRateViewModel(new ItemViewModel());
         }
 
         public void bind(Currency currency) {

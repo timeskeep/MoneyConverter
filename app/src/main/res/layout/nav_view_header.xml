@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.bad_coders.moneyconverter.ViewModel.DrawerViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/side_nav_bar"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/profile_photo"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="8dp"
+            android:adjustViewBounds="false"
+            android:cropToPadding="false"
+            android:paddingTop="8dp"
+            app:imageUrl="@{viewmodel.authorised ? viewmodel.user.photoUrl : null}"
+            app:layout_constraintBottom_toTopOf="@+id/profile_name"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/profile_name"
+            style="@style/Base.TextAppearance.AppCompat.Subhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{!viewmodel.authorised ? @string/guest_label : viewmodel.user.displayName}"
+            android:textColor="@color/ic_launcher_background"
+            app:layout_constraintBottom_toTopOf="@+id/profile_email"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/profile_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@{viewmodel.authorised ? viewmodel.user.email : @string/login_tip}"
+            android:textColor="@color/color_dark_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/menu_dropdown"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="google@gmail.com"/>
+
+        <ImageButton
+            android:id="@+id/menu_dropdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{(v) -> viewmodel.onDropdownClick(v)}"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_drop_down_white_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

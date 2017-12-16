@@ -8,7 +8,7 @@
 
         <variable
             name="rateViewModel"
-            type="com.bad_coders.moneyconverter.ViewModel.RateListItemViewModel"/>
+            type="com.bad_coders.moneyconverter.ViewModel.ItemViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

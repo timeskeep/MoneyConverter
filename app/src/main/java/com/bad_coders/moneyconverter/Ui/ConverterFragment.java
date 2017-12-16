@@ -40,7 +40,7 @@ public class ConverterFragment extends Fragment {
         FragmentConverterBinding binding = DataBindingUtil.inflate(inflater,
                 R.layout.fragment_converter, container, false);
         Currency currency = (Currency) getArguments().getSerializable(CURRENCY_TAG);
-        ConverterViewModel viewModel = new ConverterViewModel(currency);
+        ConverterViewModel viewModel = new ConverterViewModel(currency, getContext());
         binding.setViewModel(viewModel);
         return binding.getRoot();
     }

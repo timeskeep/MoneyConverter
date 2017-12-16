@@ -5,17 +5,12 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.bad_coders.moneyconverter.Adapter.RateAdapter;
-import com.bad_coders.moneyconverter.BuildConfig;
 import com.bad_coders.moneyconverter.R;
 import com.bad_coders.moneyconverter.ViewModel.RateListViewModel;
 import com.bad_coders.moneyconverter.databinding.FragmentExchangeListBinding;
@@ -44,24 +39,5 @@ public class ExchangeListFragment extends Fragment {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.setAdapter(rateAdapter);
         return binding.getRoot();
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.main_menu, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_about:
-                new AlertDialog.Builder(getContext())
-                        .setTitle("About")
-                        .setMessage(getString(R.string.version_info, String.valueOf(BuildConfig.VERSION_NAME), BuildConfig.BUILD_TYPE))
-                        .show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 }

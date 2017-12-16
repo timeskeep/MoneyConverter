@@ -1,9 +1,7 @@
 package com.bad_coders.moneyconverter;
 
-import android.view.View;
-
 import com.bad_coders.moneyconverter.Model.Currency;
-import com.bad_coders.moneyconverter.ViewModel.RateListItemViewModel;
+import com.bad_coders.moneyconverter.ViewModel.ItemViewModel;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,11 +15,11 @@ import static org.mockito.Mockito.mock;
  * Created on 21.11.2017.
  */
 public class RateListItemViewModelTest {
-    private RateListItemViewModel mTarget;
+    private ItemViewModel mTarget;
 
     @Before
     public void setUp() throws Exception {
-        mTarget = new RateListItemViewModel();
+        mTarget = new ItemViewModel();
         MockitoAnnotations.initMocks(Currency.class);
     }
 
