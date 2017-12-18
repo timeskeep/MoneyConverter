@@ -1,5 +1,7 @@
 package com.bad_coders.moneyconverter;
 
+import android.test.mock.MockContext;
+
 import com.bad_coders.moneyconverter.Model.Currency;
 import com.bad_coders.moneyconverter.ViewModel.ItemViewModel;
 
@@ -19,7 +21,8 @@ public class RateListItemViewModelTest {
 
     @Before
     public void setUp() throws Exception {
-        mTarget = new ItemViewModel();
+        MockContext context = new MockContext();
+        mTarget = new ItemViewModel(context);
         MockitoAnnotations.initMocks(Currency.class);
     }
 
