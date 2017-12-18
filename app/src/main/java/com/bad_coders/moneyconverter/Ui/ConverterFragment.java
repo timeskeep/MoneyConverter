@@ -32,6 +32,7 @@ public class ConverterFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((ConverterActivity) getActivity()).getSupportActionBar().setTitle(R.string.converter_label);
         setRetainInstance(true);
     }
 

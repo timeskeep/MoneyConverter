@@ -1,6 +1,7 @@
 package com.bad_coders.moneyconverter.Adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -49,10 +50,17 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.ViewHolder> {
         public ViewHolder(RateItemBinding binding) {
             super(binding.getRoot());
             mBinding = binding;
-            mBinding.setRateViewModel(new ItemViewModel());
+            mBinding.setRateViewModel(new ItemViewModel(mContext));
         }
 
         public void bind(Currency currency) {
+            SharedPreferences sharedPreferences =
+                    mContext.getSharedPreferences(mContext.getApplicationInfo().packageName + "_preferences",
+                            Context.MODE_PRIVATE);
+            String rateBaseSymb = sharedPreferences.getString("currency_base", "UAH");
+            double rateBase = sharedPreferences.getFloat("rate_base", 1);
+            currency.setRate(currency.getRate() / rateBase);
+            currency.setBaseCurSymb(rateBaseSymb);
             mBinding.getRateViewModel().setCurrency(currency);
             mBinding.executePendingBindings();
         }

@@ -4,18 +4,19 @@
     ]>
 <resources>
     <string name="app_name">&appname;</string>
+    <string name="last_update">Останнє оновлення: %s</string>
     <string name="uah_code">UAH</string>
     <string name="uah_name">Українська гривня</string>
     <string name="error_msg">Отакої! Щось пішло не так!</string>
-    <string name="label">Хочу придбати</string>
-    <string name="curr_exch_line">Курс обміну %s%s - %10.4f</string>
+    <string name="label">Хочу придбати %s</string>
+    <string name="curr_exch_line">Курс обміну %s%s - %1.4f</string>
     <string name="hint_zeros">0.00</string>
     <string name="try_again_button">Спробувати ще раз</string>
     <string name="rate_format">%10.4f</string>
     <string name="currency_amount">1</string>
     <string name="about_menu_item">Про додаток</string>
     <string name="version_info">Версія: %s</string>
-    <string name="amount_needed_label">Необхідна кількість валюти</string>
+    <string name="amount_needed_label">Необхідна кількість %s</string>
     <string name="action_open_drawer">Відкрити меню</string>
     <string name="action_close_drawer">Закрити меню</string>
     <string name="parse_error_message">Невірний формат. Ви ввели число вірно?</string>
@@ -24,7 +25,7 @@
     <string name="subject">Відгук про програму \"&appname;\"</string>
     <string name="send_email">Відправити повідомлення, використовуючи: </string>
     <string name="send_feedback_protocol">mailto</string>
-    <string name="feedback_email_address">tarasbarabash@gmail.com</string>
+    <string name="feedback_email_address">bad_coders_unreal_email_address@gmail.com</string>
     <string name="send_feedback">Відправити відгук</string>
     <string name="email_intent_resolve_error">Відсутня програма для обміну е-мейл повідомлень!</string>
     <string name="guest_label">Гість</string>
@@ -47,4 +48,6 @@
     <string name="maps_fragment_label">Найближчий банк</string>
     <string name="gps_error_msg">Без даних про місцеположення діла не буде!</string>
     <string name="recently_login_error">Щоб виконати цю операція необхідно виконати повторну авторизацію!</string>
+    <string name="graphic_label">Графік зміни курсу за 5 років</string>
+    <string name="converter_label">Конвертер</string>
 </resources>

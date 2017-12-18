@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -8,7 +7,7 @@
 
         <variable
             name="rateViewModel"
-            type="com.bad_coders.moneyconverter.ViewModel.ItemViewModel"/>
+            type="com.bad_coders.moneyconverter.ViewModel.ItemViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -32,33 +31,19 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/base_cur_name"
             style="@style/rate_symb"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:text="@{rateViewModel.currency.curSymb}"
-            app:layout_constraintEnd_toStartOf="@+id/exchange_rate"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/base_currency"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="EUR"/>
-
-        <TextView
-            android:id="@+id/cur_full_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:maxWidth="100dp"
-            android:text="@{rateViewModel.currency.name}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/exchange_rate"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/base_currency"
-            app:layout_constraintTop_toBottomOf="@+id/base_cur_name"
-            tools:text="українська гривня"/>
+            tools:text="EUR" />
 
         <TextView
             android:id="@+id/exchange_rate"
@@ -72,33 +57,21 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/uah_code_label"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="31.25"/>
+            tools:text="31.25" />
 
         <TextView
             android:id="@+id/uah_code_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="16dp"
-            android:text="@string/uah_code"
+            android:layout_marginTop="8dp"
+            android:text="@{rateViewModel.currency.baseCurSymb}"
             android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
-            app:layout_constraintBottom_toBottomOf="@+id/base_cur_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/full_name_uah"
-            app:layout_constraintTop_toTopOf="@+id/base_cur_name"/>
-
-        <TextView
-            android:id="@+id/full_name_uah"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="16dp"
-            android:maxWidth="100dp"
-            android:text="@string/uah_name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/uah_code_label"
-            app:layout_constraintVertical_bias="0.0"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="UAH" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

@@ -23,7 +23,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     @Override
     public void onCreatePreferencesFix(@Nullable Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.preferences_app, rootKey);
-        mSettingsViewModel = new SettingsViewModel(getPreferenceScreen(), (DrawerActivity) getActivity());
+        mSettingsViewModel = new SettingsViewModel(getPreferenceScreen());
         mSettingsViewModel.setupCurrencyList();
     }
 

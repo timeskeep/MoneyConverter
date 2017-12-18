@@ -3,7 +3,7 @@
     <PreferenceCategory
         android:title="@string/app_settings_category_title"/>
     <ListPreference
-        android:defaultValue="1"
+        android:defaultValue="UAH"
         android:key="currency_base"
         android:title="@string/main_cur_label"/>
 </PreferenceScreen>

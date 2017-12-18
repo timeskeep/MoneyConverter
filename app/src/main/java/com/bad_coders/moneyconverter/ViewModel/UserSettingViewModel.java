@@ -39,10 +39,10 @@ public class UserSettingViewModel implements SharedPreferences.OnSharedPreferenc
         mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         mOperationCompleteListener = new OperationCompleteListener();
         mSharedPreferences = mPreferenceScreen.getSharedPreferences();
-        updateSummeries();
+        updateSummaries();
     }
 
-    private void updateSummeries() {
+    private void updateSummaries() {
         for (int i = 0; i < mPreferenceScreen.getPreferenceCount(); i++) {
             Preference p = mPreferenceScreen.getPreference(i);
             if (!(p instanceof PreferenceCategory))
@@ -144,7 +144,7 @@ public class UserSettingViewModel implements SharedPreferences.OnSharedPreferenc
                     nameView.setText(mSharedPreferences.getString(operationKey, ""));
                     break;
             }
-            updateSummeries();
+            updateSummaries();
         }
 
         public void setOperationKey(String operationKey) {

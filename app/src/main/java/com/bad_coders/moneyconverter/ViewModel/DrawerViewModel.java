@@ -24,7 +24,7 @@ import com.bad_coders.moneyconverter.BR;
 import com.bad_coders.moneyconverter.R;
 import com.bad_coders.moneyconverter.Ui.AboutFragment;
 import com.bad_coders.moneyconverter.Ui.DrawerActivity;
-import com.bad_coders.moneyconverter.Ui.ExchangeListFragment;
+import com.bad_coders.moneyconverter.Ui.RateListFragment;
 import com.bad_coders.moneyconverter.Ui.MapsFragment;
 import com.bad_coders.moneyconverter.Ui.SettingsFragment;
 import com.bad_coders.moneyconverter.Ui.UserSettingsFragment;
@@ -51,7 +51,7 @@ public class DrawerViewModel extends BaseObservable implements NavigationView.On
     private static final String TAG = DrawerViewModel.class.getSimpleName();
     private static final int RC_SIGNIN = 5;
 
-    private String tags[] = {ExchangeListFragment.class.getSimpleName(),
+    private String tags[] = {RateListFragment.class.getSimpleName(),
             AboutFragment.class.getSimpleName(), SettingsFragment.class.getSimpleName(),
             MapsFragment.class.getSimpleName(), UserSettingsFragment.class.getSimpleName()};
 
@@ -64,6 +64,8 @@ public class DrawerViewModel extends BaseObservable implements NavigationView.On
     private boolean isAuthorised;
     private boolean mNavigationExpanded = false;
     private FirebaseUser mUser;
+
+    private String mSubtitle;
 
     public DrawerViewModel(DrawerActivity activity, DrawerLayout drawer,
                            NavigationView navigationView, NavViewHeaderBinding headerBinding) {
@@ -80,7 +82,7 @@ public class DrawerViewModel extends BaseObservable implements NavigationView.On
         boolean isFragmentShown = false;
         switch (id) {
             case R.id.rate_list_fragment:
-                isFragmentShown = getFragment(ExchangeListFragment.class);
+                isFragmentShown = getFragment(RateListFragment.class);
                 break;
             case R.id.about_fragment:
                 isFragmentShown = getFragment(AboutFragment.class);
@@ -121,7 +123,11 @@ public class DrawerViewModel extends BaseObservable implements NavigationView.On
                 break;
         }
         if (!isFragmentShown) return false;
-        mActivity.setTitle(item.getTitle());
+        if (mActivity.getSupportActionBar().getSubtitle() != null) {
+            mSubtitle = (String) mActivity.getSupportActionBar().getSubtitle();
+        }
+        mActivity.getSupportActionBar().setTitle(item.getTitle());
+        mActivity.getSupportActionBar().setSubtitle(id == R.id.rate_list_fragment ? mSubtitle : null);
         mDrawer.closeDrawer(GravityCompat.START);
         return true;
     }

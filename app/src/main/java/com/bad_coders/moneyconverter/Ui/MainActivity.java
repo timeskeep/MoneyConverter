@@ -6,6 +6,6 @@ public class MainActivity extends DrawerActivity {
 
     @Override
     public Fragment getFragment() {
-        return ExchangeListFragment.newInstance();
+        return RateListFragment.newInstance();
     }
 }

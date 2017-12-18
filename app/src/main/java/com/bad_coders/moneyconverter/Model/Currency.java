@@ -32,6 +32,9 @@ public class Currency implements Serializable {
     @SerializedName("rate")
     private double rate;
 
+    @ColumnInfo(name = Constants.DB.BASE_CUR_NAME_COLUMN)
+    private String baseCurSymb;
+
     public Currency(String name, double rate, String curSymb) {
         this.name = name;
         this.rate = rate;
@@ -48,6 +51,19 @@ public class Currency implements Serializable {
 
     public String getCurSymb() {
         return curSymb;
+    }
+
+    public String getBaseCurSymb() {
+        return baseCurSymb;
+    }
+
+    public void setRate(double rate) {
+        baseCurSymb = "UAH";
+        this.rate = rate;
+    }
+
+    public void setBaseCurSymb(String baseCurSymb) {
+        this.baseCurSymb = baseCurSymb;
     }
 
     @Override

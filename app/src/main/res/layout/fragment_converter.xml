@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -8,117 +7,155 @@
 
         <variable
             name="viewModel"
-            type="com.bad_coders.moneyconverter.ViewModel.ConverterViewModel"/>
+            type="com.bad_coders.moneyconverter.ViewModel.ConverterViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.bad_coders.moneyconverter.Ui.ConverterActivity">
+        android:background="@color/color_white"
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/amount_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/label"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/buying_amount"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="@string/hint_zeros"
-            android:inputType="numberDecimal"
-            android:onTextChanged="@{(text, start, before, count) -> viewModel.onTextChanged(text)}"
-            android:textAlignment="textEnd"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            app:layout_constraintEnd_toStartOf="@+id/cur_symb"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/amount_label"
-            tools:text="10.01"/>
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.bad_coders.moneyconverter.Ui.ConverterActivity">
 
-        <TextView
-            android:id="@+id/cur_symb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="16dp"
-            android:text="@{viewModel.converter.curPurchaseSymb}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
-            app:layout_constraintBottom_toBottomOf="@+id/buying_amount"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/buying_amount"
-            app:layout_constraintVertical_bias="1.0"
-            tools:text="GBP"/>
+                <TextView
+                    android:id="@+id/amount_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@{String.format(@string/label, viewModel.saleCurName)}"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/result_amount_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/amount_needed_label"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buying_amount"/>
+                <EditText
+                    android:id="@+id/buying_amount"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:ems="10"
+                    android:hint="@string/hint_zeros"
+                    android:inputType="numberDecimal"
+                    android:onTextChanged="@{(text, start, before, count) -> viewModel.onTextChanged(text)}"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    app:layout_constraintEnd_toStartOf="@+id/cur_symb"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/amount_label"
+                    tools:text="10.01" />
 
-        <EditText
-            android:id="@+id/result_amount"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:ems="10"
-            android:focusable="false"
-            android:hint="@string/hint_zeros"
-            android:inputType="number"
-            android:text="@{String.format(@string/rate_format, viewModel.converter.result)}"
-            android:textAlignment="textEnd"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            app:layout_constraintEnd_toStartOf="@+id/cur_symb_out"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/result_amount_label"
-            tools:text="1000"/>
+                <TextView
+                    android:id="@+id/cur_symb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{viewModel.converter.curPurchaseSymb}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+                    app:layout_constraintBottom_toBottomOf="@+id/buying_amount"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/buying_amount"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:text="GBP" />
 
-        <TextView
-            android:id="@+id/cur_symb_out"
-            android:layout_width="wrap_content"
-            android:layout_height="31dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="16dp"
-            android:text="@{viewModel.converter.curSaleSymb}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
-            app:layout_constraintBottom_toBottomOf="@+id/result_amount"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/result_amount"
-            app:layout_constraintVertical_bias="1.0"
-            tools:text="UAH"/>
+                <TextView
+                    android:id="@+id/result_amount_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@{String.format(@string/amount_needed_label, viewModel.purchaseName)}"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/buying_amount" />
 
-        <TextView
-            android:id="@+id/exchange_rate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:text="@{String.format(@string/curr_exch_line, viewModel.converter.curSaleSymb, viewModel.converter.curPurchaseSymb, viewModel.converter.rate)}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/result_amount"
-            tools:text="Курс обміну GBPUAH - 7.14"/>
+                <EditText
+                    android:id="@+id/result_amount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="@string/hint_zeros"
+                    android:inputType="number"
+                    android:text="@{String.format(@string/rate_format, viewModel.converter.result)}"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    app:layout_constraintEnd_toStartOf="@+id/cur_symb_out"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/result_amount_label"
+                    tools:text="1000" />
+
+                <TextView
+                    android:id="@+id/cur_symb_out"
+                    android:layout_width="wrap_content"
+                    android:layout_height="31dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{viewModel.converter.curSaleSymb}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+                    app:layout_constraintBottom_toBottomOf="@+id/result_amount"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/result_amount"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:text="UAH" />
+
+                <TextView
+                    android:id="@+id/exchange_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@{String.format(@string/curr_exch_line, viewModel.converter.curSaleSymb, viewModel.converter.curPurchaseSymb, viewModel.converter.rate)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/result_amount"
+                    tools:text="Курс обміну GBPUAH - 7.14" />
+
+                <TextView
+                    android:id="@+id/graph_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/graphic_label"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/exchange_rate" />
+
+
+                <ImageView
+                    android:id="@+id/graph_imageview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/graph_textview"
+                    app:loadGraph="@{viewModel.graphUri}"
+                    tools:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
+            </android.support.constraint.ConstraintLayout>
+
+        </ScrollView>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/invert_button"
@@ -129,7 +166,6 @@
             android:src="@drawable/ic_swap_vert_white_24dp"
             app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
+            app:layout_constraintEnd_toEndOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </layout>

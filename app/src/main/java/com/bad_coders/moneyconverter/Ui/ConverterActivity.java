@@ -5,9 +5,9 @@ import android.support.v4.app.Fragment;
 import com.bad_coders.moneyconverter.Model.Currency;
 
 public class ConverterActivity extends SingleFragmentActivity {
-
     @Override
     public Fragment getFragment() {
+        getSupportActionBar().setHomeButtonEnabled(true);
         Currency currency = (Currency) getIntent().getSerializableExtra("info");
         return ConverterFragment.newInstance(currency);
     }

@@ -26,6 +26,14 @@ public interface CurrencyDao {
     void deleteAll();
 
     @Query("Select " + Constants.DB.SYMBOL_COLUMN +
-            " from "+ Constants.DB.TABLE_NAME)
+            " from " + Constants.DB.TABLE_NAME)
     List<String> getCurSymbols();
+
+    @Query("Select " + Constants.DB.RATE_COLUMN + " from " + Constants.DB.TABLE_NAME + " where " +
+            Constants.DB.SYMBOL_COLUMN + " = :curSymbol")
+    double getRate(String curSymbol);
+
+    @Query("Select " + Constants.DB.NAME_COLUMN + " from " + Constants.DB.TABLE_NAME + " where " +
+            Constants.DB.SYMBOL_COLUMN + " = :curSymbol")
+    String getCurName(String curSymbol);
 }

@@ -1,10 +1,16 @@
 package com.bad_coders.moneyconverter.ViewModel;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.databinding.BindingAdapter;
 import android.view.View;
+import android.widget.TextView;
 
+import com.bad_coders.moneyconverter.Db.CurrencyDao;
+import com.bad_coders.moneyconverter.Db.CurrencyDatabase;
 import com.bad_coders.moneyconverter.Model.Currency;
 import com.bad_coders.moneyconverter.Ui.ConverterActivity;
 
@@ -14,6 +20,11 @@ import com.bad_coders.moneyconverter.Ui.ConverterActivity;
 
 public class ItemViewModel extends BaseObservable {
     private Currency mCurrency;
+    private Context mContext;
+
+    public ItemViewModel(Context mContext) {
+        this.mContext = mContext;
+    }
 
     public Currency getCurrency() {
         return mCurrency;
@@ -25,7 +36,7 @@ public class ItemViewModel extends BaseObservable {
         notifyChange();
     }
 
-    public void onItemClick(View view,  Currency currency) {
+    public void onItemClick(View view, Currency currency) {
         Intent intent = new Intent(view.getContext(), ConverterActivity.class);
         intent.putExtra("info", currency);
         view.getContext().startActivity(intent);

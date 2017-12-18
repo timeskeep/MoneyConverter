@@ -15,10 +15,10 @@ import com.bad_coders.moneyconverter.R;
 import com.bad_coders.moneyconverter.ViewModel.RateListViewModel;
 import com.bad_coders.moneyconverter.databinding.FragmentExchangeListBinding;
 
-public class ExchangeListFragment extends Fragment {
+public class RateListFragment extends Fragment {
 
-    public static ExchangeListFragment newInstance() {
-        ExchangeListFragment fragment = new ExchangeListFragment();
+    public static RateListFragment newInstance() {
+        RateListFragment fragment = new RateListFragment();
         return fragment;
     }
 
@@ -34,7 +34,7 @@ public class ExchangeListFragment extends Fragment {
                              Bundle savedInstanceState) {
         FragmentExchangeListBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_exchange_list, container, false);
         RateAdapter rateAdapter = new RateAdapter(getContext());
-        RateListViewModel rateBox = new RateListViewModel(rateAdapter, getContext());
+        RateListViewModel rateBox = new RateListViewModel(rateAdapter, (DrawerActivity) getActivity());
         binding.setRatebox(rateBox);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.setAdapter(rateAdapter);
