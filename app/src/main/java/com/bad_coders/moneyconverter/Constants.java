@@ -7,5 +7,8 @@ package com.bad_coders.moneyconverter;
 public final class Constants {
     public final class DB {
         public static final String TABLE_NAME = "currencies";
+        public static final String SYMBOL_COLUMN = "_symbol";
+        public static final String NAME_COLUMN = "name";
+        public static final String RATE_COLUMN = "rate";
     }
 }

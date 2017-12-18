@@ -5,6 +5,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import com.bad_coders.moneyconverter.Constants;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -18,16 +19,16 @@ import static com.bad_coders.moneyconverter.Constants.DB.TABLE_NAME;
 @Entity(tableName = TABLE_NAME)
 public class Currency implements Serializable {
     @PrimaryKey
-    @ColumnInfo(name = "_symbol")
+    @ColumnInfo(name = Constants.DB.SYMBOL_COLUMN)
     @SerializedName("cc")
     @NonNull
     private String curSymb;
 
-    @ColumnInfo(name = "name")
+    @ColumnInfo(name = Constants.DB.NAME_COLUMN)
     @SerializedName("txt")
     private String name;
 
-    @ColumnInfo(name = "rate")
+    @ColumnInfo(name = Constants.DB.RATE_COLUMN)
     @SerializedName("rate")
     private double rate;
 

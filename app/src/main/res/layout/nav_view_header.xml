@@ -14,6 +14,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="180dp"
+        android:id="@+id/header_view"
         android:background="@drawable/side_nav_bar"
         android:padding="16dp">
 

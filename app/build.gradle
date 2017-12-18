@@ -79,6 +79,13 @@ dependencies {
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    //Preferences
+    compile 'com.takisoft.fix:preference-v7:25.3.0.0'
+
+    //Maps
+    compile 'com.google.android.gms:play-services-maps:11.6.2'
+    compile 'com.google.android.gms:play-services-location:11.6.2'
 }
 
 apply plugin: 'com.google.gms.google-services'

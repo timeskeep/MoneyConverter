@@ -22,7 +22,6 @@ public abstract class DrawerActivity extends BaseActivity {
     private ActivityDrawerBinding mBinding;
     private DrawerViewModel mViewModel;
     private FirebaseAuth mAuth;
-    private static final int RC_SIGNIN = 5;
 
     @Override
     public void setLayout() {

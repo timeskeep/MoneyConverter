@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "743479180570",
+    "firebase_url": "https://money-converter-app.firebaseio.com",
+    "project_id": "money-converter-app",
+    "storage_bucket": "money-converter-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:743479180570:android:d849613f91d7100c",
+        "android_client_info": {
+          "package_name": "com.bad_coders.moneyconverter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "743479180570-qcbqhc42im00dh6c9sfvabbdl90q5nir.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bad_coders.moneyconverter",
+            "certificate_hash": "f36443d9b135aac5dfed92255a5c91c094d2d677"
+          }
+        },
+        {
+          "client_id": "743479180570-vgcjo1u5897bmfbos9f9gqond7a75aid.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6DPfFrxJ4hX5Rg6sb5pdgC3oN4-rbV-4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "743479180570-vgcjo1u5897bmfbos9f9gqond7a75aid.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

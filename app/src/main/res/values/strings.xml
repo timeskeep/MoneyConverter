@@ -13,8 +13,8 @@
     <string name="try_again_button">Спробувати ще раз</string>
     <string name="rate_format">%10.4f</string>
     <string name="currency_amount">1</string>
-    <string name="about_menu_item">About</string>
-    <string name="version_info">Version %s</string>
+    <string name="about_menu_item">Про додаток</string>
+    <string name="version_info">Версія: %s</string>
     <string name="amount_needed_label">Необхідна кількість валюти</string>
     <string name="action_open_drawer">Відкрити меню</string>
     <string name="action_close_drawer">Закрити меню</string>
@@ -31,4 +31,20 @@
     <string name="action_login">Увійти (створити аккаунт)</string>
     <string name="action_logout">Вийти</string>
     <string name="login_tip">Зареєструйтесь чи увійдіть у свій аккаунт!</string>
+    <string name="settings_label">Налаштування</string>
+    <string name="app_settings_category_title">Налаштування програми</string>
+    <string name="main_cur_label">Основна валюта</string>
+    <string name="profile_settings_title">Налаштування профілю</string>
+    <string name="operation_success_toast">Зміна %s успішна!</string>
+    <string name="change_email_label">Електронна адреса</string>
+    <string name="change_password_label">Пароль</string>
+    <string name="change_name_label">Ім\'я</string>
+    <string name="change_email_mes">ел. адреси</string>
+    <string name="change_password_mes">паролю</string>
+    <string name="change_name_mes">ім\'я</string>
+    <string name="action_delete">Видалити аккаунт</string>
+    <string name="delete_success">Аккаунт видалено!</string>
+    <string name="maps_fragment_label">Найближчий банк</string>
+    <string name="gps_error_msg">Без даних про місцеположення діла не буде!</string>
+    <string name="recently_login_error">Щоб виконати цю операція необхідно виконати повторну авторизацію!</string>
 </resources>

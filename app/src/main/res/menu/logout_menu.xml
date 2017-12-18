@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/action_delete_account"
+        android:icon="@drawable/ic_delete_forever_black_24dp"
+        android:title="@string/action_delete"/>
+    <item
+        android:id="@+id/action_user_settings"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="@string/settings_label"/>
+    <item
         android:id="@+id/action_logout"
         android:icon="@drawable/ic_login_black_24dp"
         android:title="@string/action_logout"/>

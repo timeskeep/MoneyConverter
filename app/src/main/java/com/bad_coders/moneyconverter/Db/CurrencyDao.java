@@ -16,7 +16,7 @@ import java.util.List;
 @Dao
 public interface CurrencyDao {
 
-    @Query("Select * from " + Constants.DB.TABLE_NAME)
+    @Query("Select * from " + Constants.DB.TABLE_NAME + " order by " + Constants.DB.SYMBOL_COLUMN)
     List<Currency> getList();
 
     @Insert
@@ -24,4 +24,8 @@ public interface CurrencyDao {
 
     @Query("Delete from " + Constants.DB.TABLE_NAME)
     void deleteAll();
+
+    @Query("Select " + Constants.DB.SYMBOL_COLUMN +
+            " from "+ Constants.DB.TABLE_NAME)
+    List<String> getCurSymbols();
 }

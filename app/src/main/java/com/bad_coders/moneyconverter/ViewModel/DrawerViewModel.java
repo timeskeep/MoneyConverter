@@ -18,14 +18,19 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bad_coders.moneyconverter.BR;
 import com.bad_coders.moneyconverter.R;
 import com.bad_coders.moneyconverter.Ui.AboutFragment;
 import com.bad_coders.moneyconverter.Ui.DrawerActivity;
 import com.bad_coders.moneyconverter.Ui.ExchangeListFragment;
+import com.bad_coders.moneyconverter.Ui.MapsFragment;
+import com.bad_coders.moneyconverter.Ui.SettingsFragment;
+import com.bad_coders.moneyconverter.Ui.UserSettingsFragment;
 import com.bad_coders.moneyconverter.databinding.NavViewHeaderBinding;
 import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Callback;
@@ -47,7 +52,8 @@ public class DrawerViewModel extends BaseObservable implements NavigationView.On
     private static final int RC_SIGNIN = 5;
 
     private String tags[] = {ExchangeListFragment.class.getSimpleName(),
-            AboutFragment.class.getSimpleName()};
+            AboutFragment.class.getSimpleName(), SettingsFragment.class.getSimpleName(),
+            MapsFragment.class.getSimpleName(), UserSettingsFragment.class.getSimpleName()};
 
     private DrawerActivity mActivity;
     private NavViewHeaderBinding mHeaderBinding;
@@ -79,6 +85,12 @@ public class DrawerViewModel extends BaseObservable implements NavigationView.On
             case R.id.about_fragment:
                 isFragmentShown = getFragment(AboutFragment.class);
                 break;
+            case R.id.settings_fragment:
+                isFragmentShown = getFragment(SettingsFragment.class);
+                break;
+            case R.id.maps_fragment:
+                isFragmentShown = getFragment(MapsFragment.class);
+                break;
             case R.id.action_login:
                 List<AuthUI.IdpConfig> providers = Arrays.asList(
                         new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
@@ -92,6 +104,20 @@ public class DrawerViewModel extends BaseObservable implements NavigationView.On
             case R.id.action_logout:
                 AuthUI.getInstance().signOut(mActivity);
                 setMenu(R.menu.login_menu);
+                break;
+            case R.id.action_delete_account:
+                mUser.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(mActivity.getApplicationContext(),
+                                R.string.delete_success,
+                                Toast.LENGTH_LONG).show();
+                        setMenu(R.menu.login_menu);
+                    }
+                });
+                break;
+            case R.id.action_user_settings:
+                isFragmentShown = getFragment(UserSettingsFragment.class);
                 break;
         }
         if (!isFragmentShown) return false;
@@ -141,6 +167,7 @@ public class DrawerViewModel extends BaseObservable implements NavigationView.On
         mUser = firebaseAuth.getCurrentUser();
         isAuthorised = mUser != null;
         notifyPropertyChanged(BR.authorised);
+        notifyPropertyChanged(BR.user);
     }
 
     @BindingAdapter({"bind:imageUrl"})

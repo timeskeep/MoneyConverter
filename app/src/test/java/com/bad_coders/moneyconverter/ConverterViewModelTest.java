@@ -1,5 +1,7 @@
 package com.bad_coders.moneyconverter;
 
+import android.test.mock.MockContext;
+
 import com.bad_coders.moneyconverter.Model.Converter;
 import com.bad_coders.moneyconverter.Model.Currency;
 import com.bad_coders.moneyconverter.ViewModel.ConverterViewModel;
@@ -19,7 +21,8 @@ public class ConverterViewModelTest {
 
     @Before
     public void setUp() throws Exception {
-        mTarget = new ConverterViewModel(new Currency("US Dollar", 26.8, "USD"));
+        MockContext context = new MockContext();
+        mTarget = new ConverterViewModel(new Currency("US Dollar", 26.8, "USD"), context);
         mConverter = mock(Converter.class);
         mTarget.setConverter(mConverter);
     }
