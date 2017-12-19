@@ -36,7 +36,7 @@ public class ConverterViewModel extends BaseObservable {
         baseGraphUri = Uri.parse("https://www.google.com/finance/chart").buildUpon()
                 .appendQueryParameter("tkr", "1")
                 .appendQueryParameter("p", "5Y")
-                .appendQueryParameter("chs", "700x700").build();
+                .appendQueryParameter("chs", "1000x1000").build();
     }
 
     public ConverterViewModel(Currency currency, Context context) {

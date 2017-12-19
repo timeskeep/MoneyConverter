@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bad_coders.moneyconverter.Db.CurrencyDao;
 import com.bad_coders.moneyconverter.Db.CurrencyDatabase;
 import com.bad_coders.moneyconverter.Model.Currency;
+import com.bad_coders.moneyconverter.R;
 import com.bad_coders.moneyconverter.Ui.ConverterActivity;
 
 /**
@@ -38,7 +39,7 @@ public class ItemViewModel extends BaseObservable {
 
     public void onItemClick(View view, Currency currency) {
         Intent intent = new Intent(view.getContext(), ConverterActivity.class);
-        intent.putExtra("info", currency);
+        intent.putExtra(mContext.getString(R.string.info_extra_key), currency);
         view.getContext().startActivity(intent);
     }
 }

@@ -10,6 +10,7 @@ import com.bad_coders.moneyconverter.Adapter.RateAdapter;
 import com.bad_coders.moneyconverter.BR;
 import com.bad_coders.moneyconverter.Db.CurrencyDatabase;
 import com.bad_coders.moneyconverter.Model.Currency;
+import com.bad_coders.moneyconverter.Model.ExponentialBackOffCallback;
 import com.bad_coders.moneyconverter.Model.RateFetcher;
 import com.bad_coders.moneyconverter.R;
 import com.bad_coders.moneyconverter.Ui.DrawerActivity;
@@ -27,7 +28,7 @@ import retrofit2.Response;
  */
 
 public class RateListViewModel extends BaseObservable
-        implements RateFetcher.OnRateFetched {
+        implements ExponentialBackOffCallback.OnFetchListener<List<Currency>> {
     private DrawerActivity mActivity;
     private RateFetcher mRateFetcher;
     private boolean isLoadFinished;

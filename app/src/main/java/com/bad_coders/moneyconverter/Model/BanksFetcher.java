@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.bad_coders.moneyconverter.R;
 
+import java.util.concurrent.Executors;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -17,11 +19,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BanksFetcher {
     private static final String TAG = BanksFetcher.class.getSimpleName();
-    public static final String DOMAIN_NAME = "https://maps.googleapis.com/";
-    private OnBanksFetchedListener mListener;
+    private static final String DOMAIN_NAME = "https://maps.googleapis.com/";
+    private ExponentialBackOffCallback.OnFetchListener<BankResponse> mListener;
     private Context mContext;
 
-    public BanksFetcher(OnBanksFetchedListener onBanksFetchedListener, Context context) {
+    public BanksFetcher(ExponentialBackOffCallback.OnFetchListener<BankResponse> onBanksFetchedListener,
+                        Context context) {
         mListener = onBanksFetchedListener;
         mContext = context;
     }
@@ -29,34 +32,15 @@ public class BanksFetcher {
     public void fetch(double lng, double lat, float zoom) {
         String coordinates = lng + "," + lat;
         int radius = (int) ((21 - zoom) * 100);
-        BanksCallback callback = new BanksCallback();
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(DOMAIN_NAME)
                 .addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();
         BanksClient rateClient = retrofit.create(BanksClient.class);
-        Call<BankResponse> call = rateClient.getListOfBanks(coordinates, "bank", radius,
+        Call<BankResponse> call = rateClient.getListOfBanks(coordinates, mContext.getString(R.string.bank_key), radius,
                 mContext.getString(R.string.google_maps_key));
-        call.enqueue(callback);
-    }
-
-    public interface OnBanksFetchedListener {
-        void onSuccess(Response<BankResponse> banks);
-
-        void onFailure();
-    }
-
-    private class BanksCallback implements Callback<BankResponse> {
-        @Override
-        public void onResponse(Call<BankResponse> call, Response<BankResponse> response) {
-            mListener.onSuccess(response);
-        }
-
-        @Override
-        public void onFailure(Call<BankResponse> call, Throwable t) {
-            Log.e(TAG, t.getMessage());
-            mListener.onFailure();
-        }
+        call.enqueue(new ExponentialBackOffCallback<BankResponse>(call, mListener,
+                Executors.newScheduledThreadPool(1)));
     }
 }

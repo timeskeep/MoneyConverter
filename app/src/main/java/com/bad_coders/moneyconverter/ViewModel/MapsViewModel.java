@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.bad_coders.moneyconverter.Model.BankResponse;
 import com.bad_coders.moneyconverter.Model.BanksFetcher;
+import com.bad_coders.moneyconverter.Model.ExponentialBackOffCallback;
 import com.bad_coders.moneyconverter.R;
 import com.bad_coders.moneyconverter.Ui.DrawerActivity;
 import com.bad_coders.moneyconverter.Ui.MapsFragment;
@@ -29,7 +30,7 @@ import retrofit2.Response;
  * Created on 17.12.2017.
  */
 
-public class MapsViewModel implements BanksFetcher.OnBanksFetchedListener {
+public class MapsViewModel implements ExponentialBackOffCallback.OnFetchListener<BankResponse> {
     private static final String TAG = MapsViewModel.class.getSimpleName();
     private static final int RC_PERMISSIONS = 32;
     private GoogleMap mMap;
@@ -80,7 +81,7 @@ public class MapsViewModel implements BanksFetcher.OnBanksFetchedListener {
     }
 
     @Override
-    public void onSuccess(Response<BankResponse> response) {
+    public void onResponse(Response<BankResponse> response) {
         List<BankResponse.Bank> banks = response.body().getResults();
         for (BankResponse.Bank b : banks) {
             mMap.addMarker(new MarkerOptions()
@@ -94,7 +95,7 @@ public class MapsViewModel implements BanksFetcher.OnBanksFetchedListener {
     }
 
     @Override
-    public void onFailure() {
+    public void onFailure(Throwable t) {
         Toast.makeText(mMapsFragment.getContext(), R.string.error_msg, Toast.LENGTH_LONG).show();
     }
 
@@ -119,7 +120,8 @@ public class MapsViewModel implements BanksFetcher.OnBanksFetchedListener {
                 LatLng latLng = new LatLng(lat, lng);
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
                 mBanksFetcher =
-                        new BanksFetcher(MapsViewModel.this, mMapsFragment.getContext());
+                        new BanksFetcher(MapsViewModel.this,
+                                mMapsFragment.getContext());
                 mBanksFetcher.fetch(lat, lng, mMap.getCameraPosition().zoom);
             }
         }

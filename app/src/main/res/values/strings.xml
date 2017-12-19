@@ -51,4 +51,6 @@
     <string name="graphic_label">Графік зміни курсу за 5 років</string>
     <string name="converter_label">Конвертер</string>
     <string name="connection_error">Невдалося підключитися до серверу. Помилка - %s</string>
+    <string name="bank_key" translatable="false">bank</string>
+    <string name="info_extra_key">info</string>
 </resources>
