@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.widget.Toast;
 
 import com.bad_coders.moneyconverter.Adapter.RateAdapter;
 import com.bad_coders.moneyconverter.BR;
@@ -27,19 +28,21 @@ import retrofit2.Response;
 
 public class RateListViewModel extends BaseObservable
         implements RateFetcher.OnRateFetched {
+    private DrawerActivity mActivity;
     private RateFetcher mRateFetcher;
     private boolean isLoadFinished;
     private boolean isLoadSuccess;
     private RateAdapter mAdapter;
     private CurrencyDatabase mDatabase;
 
-    public RateListViewModel(RateAdapter adapter, DrawerActivity mActivity) {
+    public RateListViewModel(RateAdapter adapter, DrawerActivity activity) {
         mAdapter = adapter;
-        mDatabase = CurrencyDatabase.newInstance(mActivity.getBaseContext());
+        mActivity = activity;
+        mDatabase = CurrencyDatabase.newInstance(activity.getBaseContext());
         mRateFetcher = new RateFetcher(this);
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-        mActivity.getSupportActionBar().setTitle(R.string.exchange_rate_list_label);
-        mActivity.getSupportActionBar().setSubtitle(mActivity
+        activity.getSupportActionBar().setTitle(R.string.exchange_rate_list_label);
+        activity.getSupportActionBar().setSubtitle(mActivity
                 .getApplicationContext().getString(R.string.last_update, df.format(new Date())));
         mRateFetcher.loadRateList();
     }
@@ -79,13 +82,18 @@ public class RateListViewModel extends BaseObservable
     }
 
     @Override
-    public void onFailure() {
+    public void onFailure(Throwable t) {
         List<Currency> rateList = mDatabase.getCurrencyDao().getList();
         isLoadFinished = true;
         if (rateList.size() != 0) {
             mAdapter.swapList(rateList);
             isLoadSuccess = true;
-        } else isLoadSuccess = false;
+        } else {
+            Toast.makeText(mActivity.getBaseContext(),
+                    mActivity.getString(R.string.connection_error, t.getMessage()),
+                    Toast.LENGTH_LONG).show();
+            isLoadSuccess = false;
+        }
         notifyLayout();
     }
 }

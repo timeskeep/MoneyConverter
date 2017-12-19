@@ -50,4 +50,5 @@
     <string name="recently_login_error">Щоб виконати цю операція необхідно виконати повторну авторизацію!</string>
     <string name="graphic_label">Графік зміни курсу за 5 років</string>
     <string name="converter_label">Конвертер</string>
+    <string name="connection_error">Невдалося підключитися до серверу. Помилка - %s</string>
 </resources>
