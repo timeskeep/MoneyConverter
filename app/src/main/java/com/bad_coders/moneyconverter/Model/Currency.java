@@ -5,12 +5,12 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-import com.bad_coders.moneyconverter.Constants;
+import com.bad_coders.moneyconverter.Utils.Constants;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-import static com.bad_coders.moneyconverter.Constants.DB.TABLE_NAME;
+import static com.bad_coders.moneyconverter.Utils.Constants.DB.TABLE_NAME;
 
 /**
  * Created on 16.11.2017.

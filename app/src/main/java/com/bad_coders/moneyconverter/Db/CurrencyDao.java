@@ -4,7 +4,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
-import com.bad_coders.moneyconverter.Constants;
+import com.bad_coders.moneyconverter.Utils.Constants;
 import com.bad_coders.moneyconverter.Model.Currency;
 
 import java.util.List;

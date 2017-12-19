@@ -1,4 +1,4 @@
-package com.bad_coders.moneyconverter;
+package com.bad_coders.moneyconverter.Utils;
 
 /**
  * Created on 21.11.2017.

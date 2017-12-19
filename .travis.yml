@@ -3,12 +3,13 @@ language: android
 android:
         components:
                 - platform-tools
-                - build-tools-27.0.1
+                - build-tools-27.0.2
                 - android-27
 script:
         - ./gradlew build
         - ./gradlew clean assembleDebug test lint
 before_install:
+        - yes | sdkmanager "platforms;android-27"
         - chmod +x gradlew
 
 branches:

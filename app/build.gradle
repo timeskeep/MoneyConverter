@@ -39,7 +39,7 @@ android {
         abortOnError false // is false due to errors in newer version of FirebaseUI
         warningsAsErrors false
     }
-    buildToolsVersion '27.0.1'
+    buildToolsVersion '27.0.2'
 }
 
 dependencies {
