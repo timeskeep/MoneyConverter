@@ -40,10 +40,7 @@ public class RateListViewModel extends BaseObservable
         mActivity = activity;
         mDatabase = CurrencyDatabase.newInstance(activity.getBaseContext());
         mRateFetcher = new RateFetcher(this);
-        DateFormat df = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         activity.getSupportActionBar().setTitle(R.string.exchange_rate_list_label);
-        activity.getSupportActionBar().setSubtitle(mActivity
-                .getApplicationContext().getString(R.string.last_update, df.format(new Date())));
         mRateFetcher.loadRateList();
     }
 
@@ -72,6 +69,9 @@ public class RateListViewModel extends BaseObservable
     @Override
     public void onResponse(Response<List<Currency>> response) {
         List<Currency> rateList = response.body();
+        DateFormat df = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+        mActivity.getSupportActionBar().setSubtitle(mActivity
+                .getApplicationContext().getString(R.string.last_update, df.format(new Date())));
         rateList.add(new Currency("Українська гривня", 1, "UAH"));
         mDatabase.getCurrencyDao().deleteAll();
         mDatabase.getCurrencyDao().insertAll(rateList);

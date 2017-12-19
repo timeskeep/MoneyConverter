@@ -84,7 +84,7 @@ public class RateFetcher {
                 @Override
                 public void run() {
                     Call<List<Currency>> call = mCall.clone();
-                    Log.e(TAG, "Number of retry: " + (mNumOfRetries + 1)
+                    Log.v(TAG, "Number of retry: " + (mNumOfRetries + 1)
                             + ". Next retry in " + interval + " milliseconds.");
                     call.enqueue(new RateCallback(call, mNumOfRetries + 1));
                 }
